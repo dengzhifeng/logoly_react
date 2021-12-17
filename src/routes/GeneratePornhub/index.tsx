@@ -3,41 +3,50 @@
  * @author: steve.deng
  * @Date: 2021-12-14 16:12:41
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-16 18:15:59
+ * @LastEditTime: 2021-12-17 15:54:53
  */
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
 import domToImage from 'dom-to-image';
+import EditStyle from '@/components/EditStyle';
+import { connect } from 'react-redux';
 import './index.less';
-function GeneratePornhub() {
+import { InitState } from '@/typings/store';
+import actions from '@/store/action';
+import { HashRouterProps } from 'react-router-dom';
+
+type stateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof actions;
+type Props = PropsWithChildren<HashRouterProps & stateProps & DispatchProps>;
+function GeneratePornhub(props: Props) {
     function download() {
-        console.log('download');
         const node = document.getElementById('logo');
         domToImage.toPng(node).then(function (res: string) {
-            console.log(res);
             downloadImage(res, 'logo.png');
         });
     }
 
-    function downloadImage(imgsrc: string, name: string) {
+    function downloadImage(imgSrc: string, name: string) {
         //下载图片地址和图片名
         let image = new Image();
         // 解决跨域 Canvas 污染问题
         image.setAttribute('crossOrigin', 'anonymous');
         image.onload = function () {
-            let canvas = document.createElement('canvas');
-            canvas.width = image.width;
-            canvas.height = image.height;
-            let context = canvas.getContext('2d');
-            context.drawImage(image, 0, 0, image.width, image.height);
-            let url = canvas.toDataURL('image/png');
+            // let canvas = document.createElement('canvas');
+            // canvas.width = image.width;
+            // canvas.height = image.height;
+            // let context = canvas.getContext('2d');
+            // context.drawImage(image, 0, 0, image.width, image.height);
+            // let url = canvas.toDataURL('image/png');
+            // debugger;
             let a = document.createElement('a');
             let event = new MouseEvent('click');
             a.download = name || 'photo';
-            a.href = url;
+            a.href = imgSrc;
             a.dispatchEvent(event);
         };
-        image.src = imgsrc;
+        image.src = imgSrc;
+        document.body.appendChild(image);
     }
 
     return (
@@ -48,18 +57,23 @@ function GeneratePornhub() {
                         className="prefix"
                         contentEditable={true}
                         suppressContentEditableWarning={true}
+                        style={{ fontSize: props.fontSize + 'px' }}
                     >
-                        ss
+                        ddddd
                     </span>
+                    {/* <!-- HACK: meaningless text: ".", just to split input area, see: #269 --> */}
+                    <span style={{ fontSize: 0 }}>.</span>
                     <span
                         className="postfix"
                         contentEditable={true}
                         suppressContentEditableWarning={true}
+                        style={{ fontSize: props.fontSize + 'px' }}
                     >
                         xx
                     </span>
                 </div>
             </div>
+            <EditStyle></EditStyle>
             <div className="download-share">
                 <div className="download" onClick={download}>
                     Export
@@ -68,4 +82,7 @@ function GeneratePornhub() {
         </div>
     );
 }
-export default GeneratePornhub;
+let mapStateToProps = (state: InitState) => state;
+let mapActionToProps = actions; // 经过绑定后actions也会成为组件的属性对象
+
+export default connect(mapStateToProps, mapActionToProps)(GeneratePornhub);
