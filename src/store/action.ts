@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-17 11:30:12
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-17 14:57:22
+ * @LastEditTime: 2021-12-17 16:48:28
  */
 import { AnyAction } from 'redux';
 import * as actionTypes from './action-types';
@@ -16,9 +16,21 @@ export default {
             payload: fontSize
         };
     },
-    changeColor(color: number): AnyAction {
+    changePrefixColor(color: String): AnyAction {
         return {
-            type: actionTypes.SET_COLOR,
+            type: actionTypes.SET_PREFIX_COLOR,
+            payload: color
+        };
+    },
+    changeSuffixColor(color: String): AnyAction {
+        return {
+            type: actionTypes.SET_SUFFIX_COLOR,
+            payload: color
+        };
+    },
+    changeSuffixBgColor(color: String): AnyAction {
+        return {
+            type: actionTypes.SET_SUFFIX_BG_COLOR,
             payload: color
         };
     }

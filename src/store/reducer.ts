@@ -3,16 +3,12 @@
  * @author: steve.deng
  * @Date: 2021-12-17 11:30:05
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-17 15:52:53
+ * @LastEditTime: 2021-12-17 16:50:17
  */
 import { InitState } from '@/typings/store';
 import { AnyAction } from 'redux';
 import * as actionTypes from './action-types';
-const initState: InitState = {
-    fontSize: 40,
-    color: 10
-};
-export default function (state: InitState = initState, action: AnyAction) {
+export default function (state: InitState, action: AnyAction) {
     switch (action.type) {
         case actionTypes.SET_FONT_SIZE:
             return {
@@ -21,12 +17,22 @@ export default function (state: InitState = initState, action: AnyAction) {
             };
             console.log('state.fontSize ', state.fontSize);
             break;
-        case actionTypes.SET_COLOR:
+        case actionTypes.SET_PREFIX_COLOR:
             return {
                 ...state,
-                color: action.payload
+                prefixColor: action.payload
             };
-            console.log('state.color ', state.color);
+            break;
+        case actionTypes.SET_SUFFIX_COLOR:
+            return {
+                ...state,
+                suffixColor: action.payload
+            };
+        case actionTypes.SET_SUFFIX_BG_COLOR:
+            return {
+                ...state,
+                suffixBgColor: action.payload
+            };
             break;
         default:
             break;

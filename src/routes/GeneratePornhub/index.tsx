@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-14 16:12:41
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-17 15:54:53
+ * @LastEditTime: 2021-12-17 16:49:35
  */
 import React, { PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
@@ -57,19 +57,24 @@ function GeneratePornhub(props: Props) {
                         className="prefix"
                         contentEditable={true}
                         suppressContentEditableWarning={true}
-                        style={{ fontSize: props.fontSize + 'px' }}
+                        style={{
+                            fontSize: props.fontSize + 'px',
+                            color: props.prefixColor
+                        }}
                     >
-                        ddddd
+                        edit
                     </span>
-                    {/* <!-- HACK: meaningless text: ".", just to split input area, see: #269 --> */}
-                    <span style={{ fontSize: 0 }}>.</span>
                     <span
                         className="postfix"
                         contentEditable={true}
                         suppressContentEditableWarning={true}
-                        style={{ fontSize: props.fontSize + 'px' }}
+                        style={{
+                            fontSize: props.fontSize + 'px',
+                            color: props.suffixColor,
+                            background: props.suffixBgColor
+                        }}
                     >
-                        xx
+                        me
                     </span>
                 </div>
             </div>

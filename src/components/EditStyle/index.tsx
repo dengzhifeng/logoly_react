@@ -3,10 +3,10 @@
  * @author: steve.deng
  * @Date: 2021-12-14 16:12:41
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-17 15:50:13
+ * @LastEditTime: 2021-12-17 16:49:16
  */
 import { InitState } from '@/typings/store';
-import React, { useState, PropsWithChildren } from 'react';
+import React, { useState, PropsWithChildren, FormEvent } from 'react';
 import './index.less';
 import actions from '@/store/action';
 import { connect } from 'react-redux';
@@ -16,18 +16,53 @@ type stateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof actions;
 type Props = PropsWithChildren<HashRouterProps & stateProps & DispatchProps>;
 function EditStyle(props: Props) {
-    const [fontSize, setFontSize] = useState<number>(40);
-
     const fontSizeChange = (e: any) => {
         const value = e.target.value;
         console.log('fontSizeChange', e.target.value);
-        // setFontSize(value);
         props.changeFontSize(value);
-        props.changeColor(1000);
         console.log('props', props);
+    };
+
+    const prefixColorChange = (event: any) => {
+        props.changePrefixColor(event.target.value);
+    };
+    // 修改后缀颜色
+    const suffixColorChange = (event: any) => {
+        props.changeSuffixColor(event.target.value);
+    };
+    // 修改后缀背景色
+    const suffixBgColorChange = (event: any) => {
+        props.changeSuffixBgColor(event.target.value);
     };
     return (
         <div className="EditStyle">
+            <div>
+                Prefix Text Color: &nbsp;
+                <input
+                    type="color"
+                    value={props.prefixColor}
+                    onInput={prefixColorChange}
+                />
+            </div>
+
+            <div>
+                Suffix Text Color: &nbsp;
+                <input
+                    type="color"
+                    value={props.suffixColor}
+                    onInput={suffixColorChange}
+                />
+            </div>
+
+            <div>
+                Suffix Background Color: &nbsp;
+                <input
+                    type="color"
+                    value={props.suffixBgColor}
+                    onInput={suffixBgColorChange}
+                />
+            </div>
+
             <div>
                 Font Size:
                 <input
@@ -38,7 +73,6 @@ function EditStyle(props: Props) {
                 />
                 props.fontSize
                 {props.fontSize}
-                {/* {fontSize}px */}
             </div>
         </div>
     );
