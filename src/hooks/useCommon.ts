@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-20 17:51:28
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-20 17:58:28
+ * @LastEditTime: 2021-12-20 22:34:57
  */
 import React, { FormEvent, PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
@@ -14,7 +14,7 @@ import { InitState } from '@/typings/store';
 import actions from '@/store/action';
 import { HashRouterProps } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
-
+import { debounce } from '@/utils/index.ts';
 // type stateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof actions;
 type Props = PropsWithChildren<HashRouterProps & DispatchProps>;
@@ -49,9 +49,10 @@ function useCommon(props: Props) {
         image.src = imgSrc;
         // document.body.appendChild(image);
     }
-
+    let debounceChangePrefix = debounce(props.changePrefix, 1000)
     const onInputPrefix = (event: any) => {
         props.changePrefix(event.target.textContent);
+        // debounceChangePrefix(event.target.textContent)
     };
     const onInputSuffix = (event: any) => {
         props.changeSuffix(event.target.textContent);
