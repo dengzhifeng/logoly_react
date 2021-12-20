@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-14 15:13:33
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-17 11:52:38
+ * @LastEditTime: 2021-12-20 18:10:16
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,12 +17,13 @@ import GeneratePornhubVertical from '@/routes/GeneratePornhubVertical';
 import About from '@/routes/About';
 import { store } from '@/store';
 import { Provider } from 'react-redux';
+import Ribbon from './components/Ribbon';
 let IndexDiv = (
     <Provider store={store}>
         <div className="main">
             <Logo></Logo>
             <Description></Description>
-
+            <Ribbon></Ribbon>
             <Router>
                 <div id="nav">
                     <div className="menu">
