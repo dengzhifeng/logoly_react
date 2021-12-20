@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-14 12:14:50
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-14 16:23:45
+ * @LastEditTime: 2021-12-20 14:49:40
  */
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
@@ -93,7 +93,8 @@ module.exports = {
     },
     plugins: [
         new htmlWebpackPlugin({
-            template: './public/index.html'
+            template: './public/index.html',
+            favicon: './public/favicon.ico'
         })
     ]
 };

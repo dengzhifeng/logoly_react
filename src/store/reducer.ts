@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-17 11:30:05
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-17 16:50:17
+ * @LastEditTime: 2021-12-20 17:44:22
  */
 import { InitState } from '@/typings/store';
 import { AnyAction } from 'redux';
@@ -32,6 +32,36 @@ export default function (state: InitState, action: AnyAction) {
             return {
                 ...state,
                 suffixBgColor: action.payload
+            };
+            break;
+        case actionTypes.SET_REVERSE_HIGHLIGHT:
+            return {
+                ...state,
+                reverseHighlight: action.payload
+            };
+            break;
+        case actionTypes.SET_TRANSPARENT_BG:
+            return {
+                ...state,
+                transparentBg: action.payload
+            };
+            break;
+        case actionTypes.SET_FONT_FAMILY:
+            return {
+                ...state,
+                fontFamily: action.payload
+            };
+            break;
+        case actionTypes.SET_PREFIX:
+            return {
+                ...state,
+                prefix: action.payload
+            };
+            break;
+        case actionTypes.SET_SUFFIX:
+            return {
+                ...state,
+                suffix: action.payload
             };
             break;
         default:

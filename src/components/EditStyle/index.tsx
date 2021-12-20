@@ -3,14 +3,15 @@
  * @author: steve.deng
  * @Date: 2021-12-14 16:12:41
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-17 16:49:16
+ * @LastEditTime: 2021-12-20 17:06:08
  */
 import { InitState } from '@/typings/store';
+import actions from '@/store/action';
 import React, { useState, PropsWithChildren, FormEvent } from 'react';
 import './index.less';
-import actions from '@/store/action';
 import { connect } from 'react-redux';
 import { HashRouterProps } from 'react-router-dom';
+import FontSelector from '../FontSelector';
 
 type stateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof actions;
@@ -33,6 +34,14 @@ function EditStyle(props: Props) {
     // 修改后缀背景色
     const suffixBgColorChange = (event: any) => {
         props.changeSuffixBgColor(event.target.value);
+    };
+    // 颜色反转
+    const reverseChange = (event: any) => {
+        props.changeReverseHighlight(event.target.checked);
+    };
+    // 背景颜色透明化
+    const changeTransparentBg = (event: any) => {
+        props.changeTransparentBg(event.target.checked);
     };
     return (
         <div className="EditStyle">
@@ -64,15 +73,32 @@ function EditStyle(props: Props) {
             </div>
 
             <div>
-                Font Size:
+                Font Size: &nbsp;
                 <input
                     type="range"
                     min="30"
                     max="200"
                     onInput={fontSizeChange}
                 />
-                props.fontSize
-                {props.fontSize}
+                {props.fontSize}px
+            </div>
+
+            <div>
+                Reverse Highlight: &nbsp;
+                <input type="checkbox" onInput={reverseChange} />
+            </div>
+            <div>
+                Transparent Background: &nbsp;
+                <input
+                    type="checkbox"
+                    value="transparentBg"
+                    onInput={changeTransparentBg}
+                />
+            </div>
+
+            <div>
+                Font: &nbsp;
+                <FontSelector></FontSelector>
             </div>
         </div>
     );
