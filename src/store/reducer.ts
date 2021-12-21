@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-17 11:30:05
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-20 17:44:22
+ * @LastEditTime: 2021-12-21 12:00:21
  */
 import { InitState } from '@/typings/store';
 import { AnyAction } from 'redux';
@@ -15,7 +15,6 @@ export default function (state: InitState, action: AnyAction) {
                 ...state,
                 fontSize: action.payload
             };
-            console.log('state.fontSize ', state.fontSize);
             break;
         case actionTypes.SET_PREFIX_COLOR:
             return {

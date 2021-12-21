@@ -18,28 +18,11 @@
 
 ## How to Use
 
-1. open the Logoly website:
- <!-- [https://logoly.pro/](https://logoly.pro/) -->
+1. open the Logoly website: [http://logo.dengsteven.cn/logo](http://logo.dengsteven.cn/logo) 
 2. edit the text in the box
 3. change color & font size as you like
 4. click the **Export** button to download the image
 
-<!-- ## TODO
-
-- share it on Facebook
-- customize fonts -->
-
-<!-- ## Changelog
-
-See [Changelog](Changelog.md) -->
-
-<!-- ## How to Contribute
-
-For those who want to request new features or submit bug reports, click [this link](https://github.com/bestony/logoly/issues/new/choose) to open a new issue.
-
-For those who want to play around with this project, read the `Get Started` section.
-
-At the end of this section, I suggest you read the [Contributing Guide](Contributing.md). -->
 
 ## Requirements
 

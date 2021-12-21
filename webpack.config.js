@@ -3,12 +3,14 @@
  * @author: steve.deng
  * @Date: 2021-12-14 12:14:50
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-20 14:49:40
+ * @LastEditTime: 2021-12-21 11:53:52
  */
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { mainModule } = require('process');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
     // production 默认会压缩
     mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
@@ -17,7 +19,7 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: 'main.js'
     },
-    devtool: 'source-map',
+    devtool: process.env.NODE_ENV == 'production' ? false : 'source-map',
     devServer: {
         hot: true,
         static: path.join(__dirname, 'static'),
@@ -95,6 +97,7 @@ module.exports = {
         new htmlWebpackPlugin({
             template: './public/index.html',
             favicon: './public/favicon.ico'
-        })
+        }),
+        new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['**/*'] })
     ]
 };

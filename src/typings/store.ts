@@ -1,11 +1,9 @@
-import { ColgroupHTMLAttributes } from '_@types_react@17.0.37@@types/react';
-
 /*
  * @description:
  * @author: steve.deng
  * @Date: 2021-12-17 11:37:32
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-20 17:42:22
+ * @LastEditTime: 2021-12-21 12:00:03
  */
 export type InitState = {
     fontSize: number;
