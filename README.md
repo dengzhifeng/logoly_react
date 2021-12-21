@@ -7,7 +7,7 @@
 
 ## Screenshot
 
-![screenshot](screenshot.png)
+![screenshot](./screenshot.png)
 
 ## Features
 
