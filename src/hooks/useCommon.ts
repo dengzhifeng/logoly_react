@@ -3,7 +3,7 @@
  * @author: steve.deng
  * @Date: 2021-12-20 17:51:28
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-20 22:34:57
+ * @LastEditTime: 2021-12-21 10:29:30
  */
 import React, { FormEvent, PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
@@ -14,7 +14,7 @@ import { InitState } from '@/typings/store';
 import actions from '@/store/action';
 import { HashRouterProps } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
-import { debounce } from '@/utils/index.ts';
+import { debounce } from '@/utils/index';
 // type stateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof actions;
 type Props = PropsWithChildren<HashRouterProps & DispatchProps>;
@@ -49,13 +49,14 @@ function useCommon(props: Props) {
         image.src = imgSrc;
         // document.body.appendChild(image);
     }
-    let debounceChangePrefix = debounce(props.changePrefix, 1000)
+    let debounceChangePrefix = debounce(props.changePrefix, 500);
     const onInputPrefix = (event: any) => {
-        props.changePrefix(event.target.textContent);
-        // debounceChangePrefix(event.target.textContent)
+        // props.changePrefix(event.target.textContent);
+        debounceChangePrefix(event.target.textContent);
     };
+    let debounceChangeSuffix = debounce(props.changeSuffix, 500);
     const onInputSuffix = (event: any) => {
-        props.changeSuffix(event.target.textContent);
+        debounceChangeSuffix(event.target.textContent);
     };
     return {
         download,

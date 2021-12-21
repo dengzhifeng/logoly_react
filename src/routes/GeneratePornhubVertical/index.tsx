@@ -3,9 +3,9 @@
  * @author: steve.deng
  * @Date: 2021-12-14 16:12:41
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-20 18:04:33
+ * @LastEditTime: 2021-12-21 10:28:46
  */
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import ReactDOM from 'react-dom';
 import domToImage from 'dom-to-image';
 import EditStyle from '@/components/EditStyle';
@@ -22,6 +22,8 @@ type DispatchProps = typeof actions;
 type Props = PropsWithChildren<HashRouterProps & stateProps & DispatchProps>;
 function GeneratePornhubVertical(props: Props) {
     const { download, onInputPrefix, onInputSuffix } = useCommon(props);
+    const [prefix, setPrefix] = useState<string>(props.prefix);
+    const [suffix, setSuffix] = useState<string>(props.suffix);
     return (
         <div className="pornhub container">
             <div
@@ -54,7 +56,7 @@ function GeneratePornhubVertical(props: Props) {
                         }}
                         onInput={onInputPrefix}
                     >
-                        {props.prefix}
+                        {prefix}
                     </p>
                     <p
                         className="postfix"
@@ -71,7 +73,7 @@ function GeneratePornhubVertical(props: Props) {
                         }}
                         onInput={onInputSuffix}
                     >
-                        {props.suffix}
+                        {suffix}
                     </p>
                 </div>
             </div>
