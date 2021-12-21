@@ -3,11 +3,11 @@
  * @author: steve.deng
  * @Date: 2021-12-14 16:12:41
  * @LastEditors: steve.deng
- * @LastEditTime: 2021-12-20 18:11:02
+ * @LastEditTime: 2021-12-21 11:39:23
  */
 import React from 'react';
 import './index.less';
-
+import logo from '@/assets/forkme_right_orange.png';
 function Ribbon() {
     return (
         <a
@@ -18,7 +18,7 @@ function Ribbon() {
             <img
                 width="149"
                 height="149"
-                src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149"
+                src={logo}
                 className="attachment-full size-full"
                 alt="Fork me on GitHub"
                 data-recalc-dims="1"
