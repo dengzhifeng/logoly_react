@@ -36,7 +36,11 @@
 4. make changes
 5. build with `npm run build`
 
-
+## 部署
+push代码到master就自动触发jenkins
 ## LICENSE
 
 [WTFPL 2](LICENSE)
+
+
+
