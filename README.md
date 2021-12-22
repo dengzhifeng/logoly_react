@@ -38,6 +38,12 @@
 
 ## 部署
 push代码到master就自动触发jenkins
+
+or 
+```
+npm run build
+```
+手动放在服务器
 ## LICENSE
 
 [WTFPL 2](LICENSE)
